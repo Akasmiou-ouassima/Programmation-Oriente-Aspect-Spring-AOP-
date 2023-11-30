@@ -4,7 +4,7 @@
 ![Alt text](image.png)
 
 
-**Architecture**
+## **Architecture**
 
 ![Alt text](image-1.png)
 
@@ -30,7 +30,7 @@
 <dependency>
 ```
 
-**Interface _IMetier_**
+## **Interface _IMetier_**
 
 ```java
 public interface IMetier {
@@ -39,7 +39,7 @@ public interface IMetier {
 }
 ```
 
-**Implémentation _MetierImpl_**
+## **Implémentation _MetierImpl_**
 > Cette classe MetierImpl est une implémentation de l'interface IMetier avec deux méthodes : process et compute. Elle utilise des annotations personnalisées telles que @Log et @SecuredByAspect pour appliquer des aspects spécifiques à ces méthodes.
 
 ```java
@@ -64,7 +64,7 @@ public class MetierImpl implements IMetier {
 }
 ```
 
-**Annotation _Log_**
+## **Annotation _Log_**
 > Cette annotation est utilisée pour marquer les méthodes qui doivent être loguées. Elle spécifie que l'annotation est disponible à l'exécution (@Retention(RetentionPolicy.RUNTIME)) et qu'elle peut être appliquée uniquement aux méthodes (@Target(ElementType.METHOD)).
 
 ```java
@@ -74,7 +74,7 @@ public @interface Log {
 }
 ```
 
-**Aspect _LogAspect_**
+## **Aspect _LogAspect_**
 > Cet aspect LogAspect utilise l'annotation @Log pour définir un pointcut qui correspond à toutes les méthodes annotées avec @Log. L'aspect utilise un conseil @Around pour loguer les informations avant et après l'exécution de la méthode, mesurer la durée d'exécution, et retourner le résultat.
 
 ```java
@@ -97,7 +97,7 @@ public class LogAspect {
 }
 ```
 
-**Annotation _SecuredByAspect_**
+## **Annotation _SecuredByAspect_**
 > Cette annotation est utilisée pour marquer les méthodes qui nécessitent une sécurité basée sur des rôles. Elle spécifie les rôles autorisés pour accéder à la méthode.
 
 ```java
@@ -108,7 +108,7 @@ public @interface SecuredByAspect {
 }
 ```
 
-**Aspect _SecurityContext_**
+## **Aspect _SecurityContext_**
 > La classe SecurityContext maintient des informations sur l'authentification et les rôles de l'utilisateur. La méthode authenticate est utilisée pour vérifier les informations d'identification, et la méthode hasRole est utilisée pour vérifier si l'utilisateur a un certain rôle.
 
 ```java
@@ -134,7 +134,7 @@ public class SecurityContext {
 }
 ```
 
-**Aspect _AuthorizationAspect_**
+## **Aspect _AuthorizationAspect_**
 > Cet aspect AuthorizationAspect utilise l'annotation @SecuredByAspect pour définir un pointcut correspondant aux méthodes annotées. Il vérifie si l'utilisateur a les rôles nécessaires pour accéder à la méthode. Si l'utilisateur est autorisé, l'exécution de la méthode se poursuit, sinon une exception RuntimeException est levée.
 
 ```java
@@ -165,7 +165,7 @@ public class AuthorizationAspect {
 }
 ```
 
-**Application _main_**
+## **Application _main_**
 > La classe Application représente le point d'entrée de l'application. Elle effectue une authentification via SecurityContext, crée le contexte Spring (ApplicationContext) en utilisant une configuration (MyConfig), obtient une instance de IMetier à partir du contexte, puis appelle les méthodes process et compute. Les résultats sont affichés sur la console. La configuration MyConfig utilise l'annotation @ComponentScan pour scanner les classes dans le package org.example.
 
 ```java
@@ -190,7 +190,7 @@ public class Application {
 class MyConfig{
 }
 ```
-**Exécution**
+## **Exécution**
 
 ![Alt text](image-2.png)
 
