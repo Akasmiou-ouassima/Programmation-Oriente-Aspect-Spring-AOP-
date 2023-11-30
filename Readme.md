@@ -190,10 +190,11 @@ public class Application {
 class MyConfig{
 }
 ```
-## **Exécution**
+## **Exécution 1**
 
 ![Alt text](image-2.png)
 
+## **Exécution 2**
 > L'application a affiché des informations de logging avant et après l'exécution de la méthode process en utilisant l'aspect LogAspect. Cependant, l'accès à la méthode compute a été refusé en raison d'une autorisation insuffisante, comme le montre le message "Unauthorized=>403 to access compute".
 
 ![Alt text](image-3.png)
